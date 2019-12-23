@@ -13,6 +13,12 @@ It looks for a `.shadow-cljs/nrepl.port` file upon reading a CLJS file and conne
 
 The fireplace cljs connection is always rescoped to the directory of the current cljs file.
 
+## Install
+
+In case of [vim-plug](https://github.com/junegunn/vim-plug):
+
+`Plug 'nimaai/vim-shadow-cljs'`
+
 ## To Do
 
 * The name of the Shadow-CLJS build is hard-coded to `:app` at the moment. Either make it configurable through vimscript or get it from somewhere else automatically.

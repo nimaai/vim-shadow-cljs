@@ -19,6 +19,9 @@ In case of [vim-plug](https://github.com/junegunn/vim-plug):
 
 `Plug 'nimaai/vim-shadow-cljs'`
 
-## To Do
+## Post-install
 
-* The name of the Shadow-CLJS build is hard-coded to `:app` at the moment. Either make it configurable through vimscript or get it from somewhere else automatically.
+The name of the Shadow-CLJS build defaults to `:app` at the moment. You can configure it by placing `shadow-cljs.vim` in your project root directory with the following content:
+```
+let g:shadow_cljs#build_id=':my-build-id'
+```

@@ -23,7 +23,7 @@ function! shadow_cljs#Piggieback()
 
       if exists('g:shadow_cljs#build_id')
         execute 'Piggieback ' . g:shadow_cljs#build_id
-      elseif
+      else
         execute 'Piggieback :app'
       endif
     endif

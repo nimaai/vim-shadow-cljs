@@ -15,16 +15,16 @@ function! shadow_cljs#Piggieback()
     if l:port
       let l:path = s:Relpath(expand("%:p"))
       execute 'Piggieback!'
-      execute 'Connect ' . l:port . ' ' . l:path 
+      execute 'silent Connect ' . l:port . ' ' . l:path 
 
       if filereadable('shadow-cljs.vim')
         source shadow-cljs.vim
       endif
 
       if exists('g:shadow_cljs#build_id')
-        execute 'Piggieback ' . g:shadow_cljs#build_id
+        execute 'silent Piggieback ' . g:shadow_cljs#build_id
       else
-        execute 'Piggieback :app'
+        execute 'silent Piggieback :app'
       endif
     endif
   endif

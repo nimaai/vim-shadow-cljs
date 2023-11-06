@@ -2,9 +2,14 @@
 " Author: Matus Kmit <matuskmit1@gmail.com>
 " License: MIT
 
-command! ShadowCljs call shadow_cljs#Piggieback()
+command! ConnectCljsRepl call shadow_cljs#ConnectCljsRepl()
 
-augroup ShadowCljsHook
+augroup ShadowCljsCljsHook
   autocmd!
-  autocmd BufReadPost,BufNewFile *.cljs call shadow_cljs#Piggieback()
+  autocmd BufEnter *.cljs ConjureClientState shadow
+augroup END
+
+augroup ShadowCljsCljHook
+  autocmd!
+  autocmd BufEnter *.clj ConjureClientState default
 augroup END

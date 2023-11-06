@@ -2,30 +2,21 @@
 " Author: Matus Kmit <matuskmit1@gmail.com>
 " License: MIT
 
-function! s:Relpath(fn)
-  let l:cwd = getcwd()
-  let l:s = substitute(a:fn, l:cwd . '/', '', '')
-  return l:s
-endfunction
+let g:shadow_cljs#cljs_port_file_path = '.shadow-cljs/nrepl.port'
 
-function! shadow_cljs#Piggieback()
-  let l:shadow_path = '.shadow-cljs/nrepl.port'
-  if filereadable(l:shadow_path)
-    let l:port = readfile(l:shadow_path, 'b', 1)[0]
-    if l:port
-      let l:path = s:Relpath(expand("%:p"))
-      execute 'Piggieback!'
-      execute 'silent Connect ' . l:port . ' ' . l:path 
-
-      if filereadable('shadow-cljs.vim')
-        source shadow-cljs.vim
-      endif
-
-      if exists('g:shadow_cljs#build_id')
-        execute 'silent Piggieback ' . g:shadow_cljs#build_id
-      else
-        execute 'silent Piggieback :app'
-      endif
+function! shadow_cljs#ConnectCljsRepl()
+  let l#file_path = g:shadow_cljs#cljs_port_file_path
+  if filereadable(l#file_path)
+    let l#port = readfile(l#file_path, 'b', 1)[0]
+    if l#port
+      execute 'silent ConjureConnect ' . l#port
+      let l:shadow_build=system("cat shadow-cljs.edn | bb -e '(-> *input* :builds keys first name print)'")
+      execute 'silent ConjureShadowSelect ' . l:shadow_build
     endif
+  endif
+  if l#port
+    echo l#port
+  else
+    echo "No port. Using default."
   endif
 endfunction

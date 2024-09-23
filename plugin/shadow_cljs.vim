@@ -2,11 +2,10 @@
 " Author: Matus Kmit <matuskmit1@gmail.com>
 " License: MIT
 
-command! ConnectCljsRepl call shadow_cljs#ConnectCljsRepl()
-
 augroup ShadowCljsCljsHook
   autocmd!
   autocmd BufEnter *.cljs ConjureClientState shadow
+  autocmd BufEnter *.cljs command! ConnectCljsRepl call shadow_cljs#ConnectCljsRepl()
 augroup END
 
 augroup ShadowCljsCljHook

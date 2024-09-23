@@ -1,4 +1,4 @@
-# Shadow CLJS integration with Vim
+# Shadow CLJS integration with Neovim and Conjure
 
 ## Requirements
 
